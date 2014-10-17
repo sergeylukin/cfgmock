@@ -28,12 +28,12 @@ path as an argument (like `gcw-dosbox -c "/path/to/my/configuration/file"`) and 
 ## Test
 
 To test the script, upload this repo to the GCW-Zero device and run following
-(assuming your repo path is `~/gcw-dosbox`):
+(assuming path to repo is `/Users/foo/gcw-dosbox`):
 
 ```
-./gcw-dosbox.sh -c "~/gcw-dosbox/custom.conf" \
--g "~/gcw-dosbox/global.conf" \
--d "cat ~/gcw-dosbox/global.conf"
+./gcw-dosbox.sh -c "/Users/foo/gcw-dosbox/custom.conf" \
+-g "/Users/foo/gcw-dosbox/global.conf" \
+-d "cat /Users/foo/gcw-dosbox/global.conf"
 ```
 
 Expected output is "**Custom configuration**" while after this command is
