@@ -5,7 +5,7 @@ CUSTOM_CONFIG_PATH=""
 GLOBAL_CONFIG_PATH="/media/data/local/home/.dosbox/dosbox-SVN.conf"
 DOSBOX_BINARY_PATH="/media/data/apps/dosbox.opk"
 
-function usage
+usage()
 {
 cat <<- _EOF_
 usage:
