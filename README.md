@@ -24,3 +24,17 @@ path as an argument (like `gcw-dosbox -c "/path/to/my/configuration/file"`) and 
 - run dosbox (which will in turn run all commands specified in `[autoexec]` directive of game configuration file, so in other words it can launch the game immediately)
 
 - restore the configuration file so that next time dosbox will be executed it's state will be normal
+
+## Test
+
+To test the script, upload this repo to the GCW-Zero device and run following
+(assuming your repo path is `~/gcw-dosbox`):
+
+```
+./gcw-dosbox.sh -c "~/gcw-dosbox/custom.conf" \
+-g "~/gcw-dosbox/global.conf" \
+-d "cat ~/gcw-dosbox/global.conf"
+```
+
+Expected output is "**Custom configuration**" while after this command is
+executed file's contents should stay unchanged.
