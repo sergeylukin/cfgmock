@@ -53,7 +53,7 @@ mv $GLOBAL_CONFIG_PATH "$GLOBAL_CONFIG_PATH.bak"
 cp $CUSTOM_CONFIG_PATH $GLOBAL_CONFIG_PATH
 
 # execute dosbox
-$DOSBOX_BINARY_PATH
+opkrun $DOSBOX_BINARY_PATH
 
 # restore the original configuration file
 mv "$GLOBAL_CONFIG_PATH.bak" $GLOBAL_CONFIG_PATH
