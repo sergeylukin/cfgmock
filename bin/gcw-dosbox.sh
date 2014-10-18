@@ -3,7 +3,7 @@
 # defaults
 CUSTOM_CONFIG_PATH=""
 GLOBAL_CONFIG_PATH="/media/data/local/home/.dosbox/dosbox-SVN.conf"
-DOSBOX_BINARY_PATH="/media/data/apps/dosbox.opk"
+DOSBOX_BINARY="opkrun /media/data/apps/dosbox.opk"
 
 usage()
 {
@@ -30,7 +30,7 @@ while [ "$1" != "" ]; do
                                 GLOBAL_CONFIG_PATH="$1"
                                 ;;
         -d | --dosbox )         shift
-                                DOSBOX_BINARY_PATH="$1"
+                                DOSBOX_BINARY="$1"
                                 ;;
         -h | --help )           usage
                                 exit
@@ -47,13 +47,13 @@ if [ "$CUSTOM_CONFIG_PATH" == "" ]; then
 fi
 
 # backup original global configuration file
-mv $GLOBAL_CONFIG_PATH "$GLOBAL_CONFIG_PATH.bak"
+cp $GLOBAL_CONFIG_PATH "$GLOBAL_CONFIG_PATH.bak"
 
-# replace global configuration file with the custom file
-cp $CUSTOM_CONFIG_PATH $GLOBAL_CONFIG_PATH
+# override global configuration with custom configuration
+echo "$(awk -F= '!a[$1]++' $CUSTOM_CONFIG_PATH $GLOBAL_CONFIG_PATH | grep -v '#' | grep -v '^$')" > $GLOBAL_CONFIG_PATH
 
 # execute dosbox
-opkrun $DOSBOX_BINARY_PATH
+$DOSBOX_BINARY
 
 # restore the original configuration file
 mv "$GLOBAL_CONFIG_PATH.bak" $GLOBAL_CONFIG_PATH

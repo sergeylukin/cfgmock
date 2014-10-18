@@ -19,7 +19,7 @@ path as an argument (like `gcw-dosbox -c "/path/to/my/configuration/file"`) and 
 
 - back up dosbox global configuration file (by default `~/.dosbox/dosbox-SVN.conf)
 
-- replace global configuration file with the custom file
+- replace global configuration file entries with entries from the custom file
 
 - run dosbox (which will in turn run all commands specified in `[autoexec]` directive of game configuration file, so in other words it can launch the game immediately)
 
@@ -31,10 +31,15 @@ To test the script, upload this repo to the GCW-Zero device and run following
 (assuming path to repo is `/Users/foo/gcw-dosbox`):
 
 ```
-./gcw-dosbox.sh -c "/Users/foo/gcw-dosbox/custom.conf" \
--g "/Users/foo/gcw-dosbox/global.conf" \
--d "cat /Users/foo/gcw-dosbox/global.conf"
+./bin/gcw-dosbox.sh -c "/Users/foo/gcw-dosbox/test/custom.conf" \
+-g "/Users/foo/gcw-dosbox/test/global.conf" \
+-d "cat /Users/foo/gcw-dosbox/test/global.conf"
 ```
 
-Expected output is "**Custom configuration**" while after this command is
-executed file's contents should stay unchanged.
+Expected output should be equal to the contents of `test/merged.conf` file.
+If test went fine - copy `./bin/gcw-dosbox.sh` to
+`/usr/local/bin/gcw-dosbox` and grant execution permissions with
+`chmod +x /usr/local/bin/gcw-dosbox`.
+
+If, however, something went wrong - sumbit an issue on Github.
+
