@@ -71,6 +71,29 @@ chmod +x /usr/local/bin/cfgmock
 If used one of the methods explained above, just remove the
 `/usr/local/bin/cfgmock` file
 
+## Testing
+
+To test if this tool is compatible with your system run:
+
+```
+wget --quiet --no-check-certificate https://raw.github.com/sergeylukin/cfgmock/master/tools/test.sh -O - | sh
+```
+
+It downloads the project, runs the spec against dummy files, verifies that
+everything is ok and cleans everything up after itself.
+
+You should get response similar to:
+
+```
+Incremental mock test passed
+Full mock override test passed
+```
+
+Alternatively, you can manually run the tests by cloning/downloading this project
+and executing `./test/test.sh` (please make sure that you have permission to execute
+both `./test/test.sh` and `bin/cfgmock.sh`, otherwise run
+`chmod +x ./test/test.sh ./bin/cfgmock.sh`)
+
 ## License
 
 Released under [MIT license](http://sergey.mit-license.org/)
