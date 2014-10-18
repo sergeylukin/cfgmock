@@ -66,6 +66,11 @@ cp ./cfgmock-master/bin/cfgmock.sh /usr/local/bin/cfgmock
 chmod +x /usr/local/bin/cfgmock
 ```
 
+## Uninstall
+
+If used one of the methods explained above, just remove the
+`/usr/local/bin/cfgmock` file
+
 ## License
 
 Released under [MIT license](http://sergey.mit-license.org/)
