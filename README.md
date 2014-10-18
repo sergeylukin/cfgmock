@@ -29,10 +29,11 @@ game's directory, with contents similar to following:
 ```
 #!/bin/sh
 
-CURRENT_DIR=`dirname $0`
+# Absolute path to this script's current working directory
+CURRENT_DIR=$( cd $(dirname $0) ; pwd -P )
 cfgmock --custom-cfg $CURRENT_DIR/dosbox-gcw.conf \
         --program-cfg /media/home/.dosbox/dosbox-SVN.conf \
-        --execute "opkrun /media/data/apps/dosbox.opk" \
+        --execute opkrun\ /media/data/apps/dosbox.opk \
         --strategy incremental
 ```
 
