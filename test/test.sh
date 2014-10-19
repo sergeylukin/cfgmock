@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Absolute path to this script's current working directory
-CURRENT_DIR=$( cd $(dirname $0) ; pwd -P )
+CURRENT_DIR="$( cd $(dirname $0) ; pwd -P )"
 
 # Get absolute path to the `cfgmock` binary
 CFGMOCK="$(cd $CURRENT_DIR/../bin; pwd -P)/cfgmock.sh"
@@ -18,9 +18,7 @@ OUTPUT="$($CFGMOCK --custom-cfg $CUSTOM_CFG_PATH \
 EXPECTED_OUTPUT="$(cat $MERGED_CFG_PATH)"
 
 if [ "$OUTPUT" == "$EXPECTED_OUTPUT" ]; then
-
   echo "Incremental mock test passed"
-
 else
   echo "Incremental mock test failed"
   echo "CFGMOCK OUTPUT:\n$OUTPUT\n\n"
@@ -36,9 +34,7 @@ OUTPUT="$($CFGMOCK --custom-cfg $CUSTOM_CFG_PATH \
 EXPECTED_OUTPUT="$(cat $CUSTOM_CFG_PATH)"
 
 if [ "$OUTPUT" == "$EXPECTED_OUTPUT" ]; then
-
   echo "Full mock override test passed"
-
 else
   echo "Full mock override test failed"
   echo "CFGMOCK OUTPUT:\n$OUTPUT\n\n"

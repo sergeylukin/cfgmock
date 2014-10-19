@@ -13,6 +13,7 @@ COMMAND_TO_EXECUTE=""
 #########################
 # Declare functions
 ###
+
 usage()
 {
 cat <<- _EOF_
@@ -80,14 +81,17 @@ if [ "$CUSTOM_CONFIG_PATH" == "" ]; then
   exit 1
 fi
 
+if [ "$PROGRAM_CONFIG_PATH" == "" ]; then
+  usage
+  exit 1
+fi
+
 if [ "$COMMAND_TO_EXECUTE" == "" ]; then
   usage
   exit 1
 fi
 
 if [ "$STRATEGY" != "incremental" -a "$STRATEGY" != "full" ]; then
-  # restore the original configuration file
-  mv "$PROGRAM_CONFIG_PATH.bak" $PROGRAM_CONFIG_PATH
   usage
   exit 1
 fi
